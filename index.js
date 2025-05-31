@@ -11,11 +11,11 @@ const gameName = "trexjump";
 
 const queries = {};
 
-bot.onText(/help/, (msg) => bot.sendMessage(msg.from.id, "This bot implements a T-Rex jumping game. Say /game if you want to play."));
-bot.onText(/start|game/, (msg) => bot.sendGame(msg.from.id, gameName));
+bot.onText(/ayuda/, (msg) => bot.sendMessage(msg.from.id, "Este bot implementa un juego de salto de T-Rex. Di /game si quieres jugar."));
+bot.onText(/inicio|juego/, (msg) => bot.sendGame(msg.from.id, gameName));
 bot.on("callback_query", function (query) {
     if (query.game_short_name !== gameName) {
-        bot.answerCallbackQuery(query.id, "Sorry, '" + query.game_short_name + "' is not available.");
+        bot.answerCallbackQuery(query.id, "Lo siento, '" + query.game_short_name + "' no está disponible.");
     } else {
         queries[query.id] = query;
         let gameurl = "https://trexgame.herokuapp.com/index.html?id="+query.id;
